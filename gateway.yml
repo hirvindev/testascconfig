@@ -1,0 +1,10 @@
+spring:
+  cloud:
+    gateway:
+      routes:
+      - id: queue
+        uri: http://queue
+        predicates:
+        - Path=/api/v1/queue/**
+        filters:
+        - RewritePath=/api/(?<books>.*), /$\{books}
